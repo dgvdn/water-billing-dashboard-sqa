@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Danh sách</title>
+	<style>
+		.center {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	</style>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<div class="center">
+		<h1>Theo dõi danh sách</h1>
+		<a th:href="@{/list/bill}" th:text="'Danh sách hóa đơn'">Danh sách hóa đơn</a>
+		<a th:href="@{/list/customer}" th:text="'Danh sách khách hàng'">Danh sách khách hàng</a>
+	</div>
+	<nav class="return-nav">
+		<button onclick="history.back()">Trở về trang trước</button>
+		<button onclick="window.location.href='/'">Trang chủ</button>
+	</nav>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Thông tin khách hàng</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<h1>Thông tin khách hàng</h1>
+	<table>
+		<tr>
+			<th>Tên khách hàng</th>
+			<th>Số hợp đồng</th>
+			<th>Địa chỉ</th>
+			<th>Số điện thoại</th>
+			<th>Email</th>
+		</tr>
+		<tr>
+			<td th:text="${khachHang.ten}"></td>
+			<td th:text="${khachHang.soHopDong}"></td>
+			<td th:text="${khachHang.diaChi}"></td>
+			<td th:text="${khachHang.sdt}"></td>
+			<td th:text="${khachHang.email}" </tr>
+	</table>
+
+	<h2>Danh sách hóa đơn</h2>
+	<table>
+		<tr>
+			<th>Số hóa đơn</th>
+			<th>Số nước tiêu thụ</th>
+			<th>Tổng tiền</th>
+			<th>Trạng thái thanh toán</th>
+		</tr>
+		<tr th:each="hoaDon : ${hoaDonList}"
+			th:class="${hoaDon.trangThaiThanhToan == 'Chưa thanh toán' ? 'chua-thanh-toan' : 'da-thanh-toan'}">
+			<td th:text="${hoaDon.id}"></td>
+			<td th:text="${hoaDon.soNuocTieuThu}"></td>
+			<td th:text="${hoaDon.tongTien}"></td>
+			<td th:text="${hoaDon.trangThaiThanhToan}"></td>
+		</tr>
+	</table>
+	<nav class="return-nav">
+		<button onclick="history.back()">Trở về trang trước</button>
+		<button onclick="window.location.href='/'">Trang chủ</button>
+	</nav>
+</body>
+
+</html>

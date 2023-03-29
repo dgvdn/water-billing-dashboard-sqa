@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Gửi mail nhắc nhở</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<div class="container mt-5">
+		<h1 class="mb-4">Gửi mail nhắc nhở</h1>
+		<div class="row justify-content-center">
+			<div class="col-md-4">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Gửi mail nhắc nhở</h5>
+						<p class="card-text">Gửi email nhắc nhở khách hàng thanh toán hóa đơn.</p>
+						<a th:href="@{/mail/send-reminder}" class="btn btn-primary">Gửi mail</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<h1 class="mt-5">Danh sách khách hàng chưa thanh toán hóa đơn</h1>
+		<div class="table-responsive">
+			<table class="table mt-3">
+				<thead>
+					<tr>
+						<th>Số hợp đồng</th>
+						<th>Tên khách hàng</th>
+						<th>Email</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="khachHang : ${khachHangs}">
+						<td th:text="${khachHang.soHopDong}"></td>
+						<td th:text="${khachHang.ten}"></td>
+						<td th:text="${khachHang.email}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="mt-5" th:if="${emailSent} == 'success'">
+			<div class="alert alert-success" role="alert">
+				Gửi email thành công!
+			</div>
+		</div>
+		<div class="mt-5" th:if="${emailSent} == 'fail'">
+			<div class="alert alert-danger" role="alert">
+				Gửi email thất bại!
+			</div>
+		</div>
+
+		<nav class="return-nav">
+			<button onclick="history.back()">Trở về trang trước</button>
+			<button onclick="window.location.href='/'">Trang chủ</button>
+		</nav>
+	</div>
+</body>
+
+</html>

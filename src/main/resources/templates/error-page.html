@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Error Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<div class="container mt-5">
+		<h1 class="text-danger mb-4">Lỗi!</h1>
+		<p class="text-danger" th:text="${message}">Đã xảy ra lỗi!</p>
+	</div>
+	<nav class="return-nav">
+		<button onclick="history.back()">Trở về trang trước</button>
+		<button onclick="window.location.href='/'">Trang chủ</button>
+	</nav>
+</body>
+
+</html>

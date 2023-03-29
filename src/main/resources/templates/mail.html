@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Thông báo</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+		.container {
+			max-width: 600px;
+		}
+	</style>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<div class="container mt-5">
+		<h1 class="mb-4 text-center">Thông báo</h1>
+		<!-- Thông báo khi gửi mail thành công -->
+		<div class="row">
+			<div class="col-md-6 mb-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Gửi mail thông báo đóng tiền</h5>
+						<p class="card-text">Gửi email cho thông báo đóng tiền.</p>
+						<a th:href="@{/mail/send-reminder-emails}" class="btn btn-primary">Gửi mail</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 mb-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Gửi mail hỗ trợ khách hàng</h5>
+						<p class="card-text">Gửi email cho khách hàng để hỗ trợ giải đáp thắc mắc.</p>
+						<a th:href="@{/mail/send-support-email}" class="btn btn-primary">Gửi mail</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<nav class="return-nav">
+		<button onclick="history.back()">Trở về trang trước</button>
+		<button onclick="window.location.href='/'">Trang chủ</button>
+	</nav>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Đăng nhập</title>
+	<style>
+		/* CSS code here */
+		body {
+			background-color: #f2f2f2;
+		}
+
+		h1 {
+			text-align: center;
+			color: #333;
+		}
+
+		form {
+			margin: 0 auto;
+			width: 50%;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: #fff;
+		}
+
+		label {
+			display: inline-block;
+			margin-bottom: 5px;
+			color: #666;
+		}
+
+		input[type="text"],
+		input[type="password"] {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+			font-size: 16px;
+			color: #333;
+		}
+
+		button[type="submit"] {
+			background-color: #008CBA;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #006B8F;
+		}
+
+		.alert {
+			padding: 15px;
+			margin-bottom: 20px;
+			border: 1px solid transparent;
+			border-radius: 4px;
+		}
+
+		.alert-danger {
+			color: #a94442;
+			background-color: #f2dede;
+			border-color: #ebccd1;
+		}
+
+		.alert-success {
+			color: #3c763d;
+			background-color: #dff0d8;
+			border-color: #d6e9c6;
+		}
+
+		.text-center {
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Đăng nhập</h1>
+	<div th:if="${param.error}" class="alert alert-danger text-center">
+		Tài khoản hoặc mật khẩu không khả dụng!
+	</div>
+	<div th:if="${param.logout}" class="alert alert-success text-center">
+		Bạn đã đăng xuất!
+	</div>
+	<form method="post" action="/login">
+		<div>
+			<label for="username">Tài khoản:</label>
+			<input type="text" id="username" name="username" />
+		</div>
+		<div>
+			<label for="password">Mật khẩu:</label>
+			<input type="password" id="password" name="password" />
+		</div>
+		<div>
+			<button type="submit">Đăng nhập</button>
+		</div>
+	</form>
+</body>
+
+</html>

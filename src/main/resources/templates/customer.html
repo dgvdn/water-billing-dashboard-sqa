@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Danh sách khách hàng</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<h1>Danh sách khách hàng</h1>
+	<form action="#" method="get">
+		<input type="text" name="search" placeholder="Tìm kiếm theo tên hoặc số hợp đồng" value="">
+		<button type="submit">Tìm kiếm</button>
+	</form>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Tên</th>
+				<th>Số hợp đồng</th>
+				<th>Điện thoại</th>
+				<th>Email</th>
+				<th>Địa chỉ</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="customer : ${customers}" th:attr="data-customer-id=${customer.id}"
+				style="cursor:pointer">
+				<td th:text="${customer.id}"></td>
+				<td th:text="${customer.ten}"></td>
+				<td th:text="${customer.soHopDong}"></td>
+				<td th:text="${customer.sdt}"></td>
+				<td th:text="${customer.email}"></td>
+				<td th:text="${customer.diaChi}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<nav class="return-nav">
+		<button onclick="history.back()">Trở về trang trước</button>
+		<button onclick="window.location.href='/'">Trang chủ</button>
+	</nav>
+	<script th:inline="javascript">
+		var rows = document.querySelectorAll("tr[data-customer-id]");
+		rows.forEach(function (row) {
+			row.addEventListener("click", function () {
+				var customerId = row.getAttribute("data-customer-id");
+				window.location.href = "/list/customer/" + customerId;
+			});
+		});
+	</script>
+</body>
+
+</html>

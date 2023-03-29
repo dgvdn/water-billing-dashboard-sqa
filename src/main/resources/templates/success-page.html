@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Success Page</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>
+		.return-nav {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background-color: #fff;
+			padding: 10px;
+			text-align: center;
+			border-top: 1px solid #ccc;
+		}
+
+		.return-nav button {
+			background-color: #333;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			margin: 0 5px;
+			cursor: pointer;
+		}
+
+		.return-nav button:hover {
+			background-color: #555;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container mt-5">
+		<h1 class="mb-4">Mail đã được gửi thành công!</h1>
+		<p>Thông báo đóng tiền cho những khách hàng chưa thanh toán hóa đơn.</p>
+
+		<nav class="return-nav">
+			<button onclick="window.location.href='/'">Trang chủ</button>
+		</nav>
+	</div>
+</body>
+
+</html>
