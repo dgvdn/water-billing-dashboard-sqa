@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Cấu hình</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<h1>Cấu hình mức nước</h1>
+	<!--<form action="#" method="get">
+		<label for="status">Trạng thái:</label>
+		<select id="status" name="status">
+			<option value="">--Tất cả--</option>
+			<option value="Chưa thanh toán">Chưa thanh toán</option>
+			<option value="Đã thanh toán">Đã thanh toán</option>
+		</select>
+		<br>
+		<label for="search">Tìm kiếm:</label>
+		<input type="text" id="search" name="search" placeholder="Tìm kiếm theo tên khách hàng hoặc số hợp đồng...">
+		<button type="submit">Tìm kiếm</button>
+	</form>-->
+	<table id="table">
+		<tr>
+			<th>id</th>
+			<th>Từ mức nước(m3)</th>
+			<th>Đến mức nước(m3)</th>
+			<th>Giá bán(đồng/m3)</th>
+		</tr>
+		<tr th:each="setting : ${settings}"
+			
+			th:attr="setting-id=${setting.id}" style="cursor:pointer">
+
+			<td th:text=" ${setting.id}"></td>
+			<td>
+			<input th:value="${setting.fromLevel}" type="number" name="fromLevel"/></td>
+			<td><input th:value="${setting.toLevel}" type="number" name="toLevel"/></td>
+			<td>
+			<input th:value="${setting.price}" type="number" name="price"/></td>
+			<td><button onclick="" class="delete btn btn-danger">Xóa</button></td>
+		</tr>
+	</table>
+	
+	<button id="add" class="btn btn-primary">Thêm</button>
+	<button id="save" class="btn btn-primary p5">Lưu</button>
+		
+	<nav class="return-nav">
+		<button onclick="history.back()">Trở về trang trước</button>
+		<button onclick="window.location.href='/'">Trang chủ</button>
+	</nav>
+
+	<script th:inline="javascript">
+		var rows = document.querySelectorAll("tr[setting-id]");
+		var addBtn = document.querySelector("#add")
+		var saveBtn = document.querySelector("#save")
+		var table = document.querySelector("#table")
+		
+		let maxId = rows?.item(rows.length - 1).getAttribute("setting-id") ?? -1
+		
+		rows.forEach(function (row) {
+			var deleteBtn = row.getElementsByClassName("delete")[0]
+			deleteBtn.addEventListener('click', () => {
+				row.parentElement.removeChild(row)
+			})
+		});
+		
+		addBtn.addEventListener('click', () => {
+			var element = document.createElement('tr')
+			element.innerHTML = 
+			`<tr style="cursor:pointer"}>
+				<td>${++maxId}</td>
+				<td><input value="" type="number" name="fromLevel"/></td>
+				<td><input value="" type="number" name="toLevel"/></td>
+				<td><input value="" type="number" name="price"/></td>
+				<td><button class="delete btn btn-danger">Xóa</button></td>
+			</tr>`
+			element.setAttribute('setting-id', maxId)
+			var deleteBtn = element.getElementsByClassName("delete")[0]
+			deleteBtn.addEventListener('click', () => {
+				element.parentElement.removeChild(element)
+			})
+			table.appendChild(element)
+		})
+		
+		saveBtn.addEventListener('click', () => {
+			var settings = []
+			var rowsData = document.querySelectorAll("tr[setting-id]");
+			
+			rowsData.forEach(row => {
+				var inputs = row.querySelectorAll('input')
+				var datas = {id: row.getAttribute('setting-id')}
+				inputs.forEach(input =>{
+					datas[input.name] = input.value
+				})
+				settings.push(datas)
+			})
+			
+			var options = {
+    		method: 'PUT',
+   			headers: {'Content-Type': 'application/json'},
+    		body: JSON.stringify({settings})
+			};
+
+			fetch("http://localhost:8080/settings/update", options)
+			.then((response) => response.json())
+  			.then((data) => {
+    			if(data.status === 200){
+					window.alert('Sửa thành công')
+    				window.history.back()
+				}
+				else{
+					window.alert('Có lỗi xảy ra')
+				}
+  			})
+  			.catch((error) => {
+   				window.alert('Có lỗi xảy ra')
+  			});
+			
+		})
+		</script>
+</body>
+
+</html>

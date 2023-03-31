@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Thống kê theo mức nước</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<h1>Thống kê theo lượng nước</h1>
+	<form action="#" method="get">
+		<label for="from">Ngày bắt đầu: </label>
+		<input type="text" id="from" name="from" placeholder="dd/MM/yyyy">
+		<label for="to">Ngày kết thúc: </label>
+		<input type="text" id="to" name="to" placeholder="dd/MM/yyyy">
+		<button type="submit">Tìm kiếm</button>
+	</form>
+	<table>
+		<tr>
+			<th>Số hóa đơn</th>
+			<th>Tên khách hàng</th>
+			<th>Số hợp đồng</th>
+			<th>Số nước tiêu thụ</th>
+			<th>Tổng tiền</th>
+			<th>Trạng thái thanh toán</th>
+		</tr>
+		<tr th:each="hoaDon : ${listHoaDon}"
+			th:class="${hoaDon.trangThaiThanhToan == 'Chưa thanh toán' ? 'chua-thanh-toan' : 'da-thanh-toan'}"
+			th:attr="data-customer-id=${hoaDon.khachHang.id}" style="cursor:pointer">
+
+			<td th:text=" ${hoaDon.id}">
+			</td>
+			<td th:text="${hoaDon.khachHang.ten}"></td>
+			<td th:text="${hoaDon.khachHang.soHopDong}"></td>
+			<td th:text="${hoaDon.soNuocTieuThu}"></td>
+			<td th:text="${hoaDon.tongTien}"></td>
+			<td th:text="${hoaDon.trangThaiThanhToan}"></td>
+		</tr>
+	</table>
+	<nav class="return-nav">
+		<button onclick="history.back()">Trở về trang trước</button>
+		<button onclick="window.location.href='/'">Trang chủ</button>
+	</nav>
+	<script th:inline="javascript">
+		var rows = document.querySelectorAll("tr[data-customer-id]");
+		rows.forEach(function (row) {
+			row.addEventListener("click", function () {
+				var customerId = row.getAttribute("data-customer-id");
+				window.location.href = "/list/customer/" + customerId;
+			});
+		});
+	</script>
+
+
+</body>
+
+</html>

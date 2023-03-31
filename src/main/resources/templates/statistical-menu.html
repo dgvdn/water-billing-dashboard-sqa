@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Thống kê</title>
+	<style>
+		.center {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	</style>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<div class="center">
+		<h1>Thống kê</h1>
+		<a th:href="@{/statistical/byPrice}" th:text="'Thống kê theo doanh thu'">Thống kê theo doanh thu</a>
+		<a th:href="@{/statistical/byWater}" th:text="'Thống kê theo lượng nước'">Thống kê theo lượng nước</a>
+	</div>
+	<nav class="return-nav">
+		<button onclick="history.back()">Trở về trang trước</button>
+		<button onclick="window.location.href='/'">Trang chủ</button>
+	</nav>
+</body>
+
+</html>

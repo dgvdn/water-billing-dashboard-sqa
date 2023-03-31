@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Cấu hình</title>
+	<link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+	<h1>Cấu hình mức nước</h1>
+	<!--<form action="#" method="get">
+		<label for="status">Trạng thái:</label>
+		<select id="status" name="status">
+			<option value="">--Tất cả--</option>
+			<option value="Chưa thanh toán">Chưa thanh toán</option>
+			<option value="Đã thanh toán">Đã thanh toán</option>
+		</select>
+		<br>
+		<label for="search">Tìm kiếm:</label>
+		<input type="text" id="search" name="search" placeholder="Tìm kiếm theo tên khách hàng hoặc số hợp đồng...">
+		<button type="submit">Tìm kiếm</button>
+	</form>-->
+	<table>
+		<tr>
+			<th>id</th>
+			<th>Từ mức nước(m3)</th>
+			<th>Đến mức nước(m3)</th>
+			<th>Giá bán(đồng/m3)</th>
+		</tr>
+		<tr th:each="setting : ${settings}"
+			
+			th:attr="setting-id=${setting.id}">
+
+			<td th:text=" ${setting.id}"></td>
+			<td th:text="${setting.fromLevel}"></td>
+			<td th:text="${setting.toLevel}"></td>
+			<td th:text="${setting.price}"></td>
+		</tr>
+	</table>
+	<a th:href="@{/settings/update}" th:text="'Sửa'" >Sửa</a>
+	<nav class="return-nav">
+		<button onclick="history.back()">Trở về trang trước</button>
+		<button onclick="window.location.href='/'">Trang chủ</button>
+	</nav>
+
+</body>
+
+</html>
