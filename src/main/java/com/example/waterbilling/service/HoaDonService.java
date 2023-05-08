@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.waterbilling.model.HoaDon;
 import com.example.waterbilling.repository.HoaDonRepository;
+import com.example.waterbilling.repository.KhachHangRepository;
 
 import jakarta.mail.MessagingException;
 
@@ -17,6 +18,9 @@ public class HoaDonService {
 
 	@Autowired
 	private HoaDonRepository hoaDonRepository;
+
+	@Autowired
+	private KhachHangRepository hangRepository;
 
 	public void sendReminderEmails() throws MessagingException {
 		List<HoaDon> unpaidBills = hoaDonRepository.findEmailsByTrangThaiThanhToan("Chưa thanh toán");

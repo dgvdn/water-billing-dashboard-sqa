@@ -2,7 +2,6 @@ package com.example.waterbilling.repository;
 
 import java.util.List;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,7 +18,5 @@ public interface KhachHangRepository extends JpaRepository<KhachHang, Long> {
 	KhachHang findByEmail(String email);
 
 	List<KhachHang> findByTenContainingOrSoHopDongContaining(String search, String search2);
-
-	List<KhachHang> findByTenStartingWithIgnoreCase(String filter, Sort by);
 
 }

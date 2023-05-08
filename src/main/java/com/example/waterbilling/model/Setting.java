@@ -9,14 +9,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "settings")
+
 public class Setting {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,4 +32,45 @@ public class Setting {
 
 	@Column(name = "ngay_tao")
 	private LocalDate ngayTao;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Double getFromLevel() {
+		return fromLevel;
+	}
+
+	public void setFromLevel(Double fromLevel) {
+		this.fromLevel = fromLevel;
+	}
+
+	public Double getToLevel() {
+		return toLevel;
+	}
+
+	public void setToLevel(Double toLevel) {
+		this.toLevel = toLevel;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public LocalDate getNgayTao() {
+		return ngayTao;
+	}
+
+	public void setNgayTao(LocalDate ngayTao) {
+		this.ngayTao = ngayTao;
+	}
+
 }

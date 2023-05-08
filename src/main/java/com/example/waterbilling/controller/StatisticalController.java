@@ -42,7 +42,7 @@ public class StatisticalController {
 	@GetMapping("/byWater")
 	public String getListWater(@RequestParam(required = false) String from,
 			@RequestParam(required = false) String to, Model model) {
-		List<HoaDon> listHoaDon = new ArrayList<HoaDon>();
+		List<HoaDon> listHoaDon = donService.getListHoaDon(null, "");
 		if(from != null && to != null) {
 			LocalDate dateFrom = LocalDate.parse(from, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 			LocalDate dateTo = LocalDate.parse(to, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -55,7 +55,7 @@ public class StatisticalController {
 	@GetMapping("/byPrice")
 	public String getListPrice(@RequestParam(required = false) String from,
 			@RequestParam(required = false) String to, Model model) {
-		List<HoaDon> listHoaDon = new ArrayList<HoaDon>();
+		List<HoaDon> listHoaDon = donService.getListHoaDon(null, "");
 		if(from != null && to != null) {
 			LocalDate dateFrom = LocalDate.parse(from, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 			LocalDate dateTo = LocalDate.parse(to, DateTimeFormatter.ofPattern("dd/MM/yyyy"));

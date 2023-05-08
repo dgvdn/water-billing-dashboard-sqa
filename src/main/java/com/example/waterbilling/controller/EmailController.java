@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.example.waterbilling.model.HoaDon;
 import com.example.waterbilling.model.KhachHang;
 import com.example.waterbilling.repository.HoaDonRepository;
@@ -85,5 +87,13 @@ public class EmailController {
 		}
 
 	}
+	@Autowired
+	private KhachHangRepository khachHangRepository;
 
+	@GetMapping("/email-suggestions")
+	@ResponseBody
+	public List<String> getEmailSuggestions(@RequestParam("query") String query) {
+		return khachHangRepository.findEmail(query);
+	}
 }
+

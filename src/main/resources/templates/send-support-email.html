@@ -64,8 +64,8 @@
 			var emailInput = document.getElementById("email");
 			var emailSuggestions = document.getElementById("email-suggestions");
 			var query = emailInput.value;
-			if (query.length >= 3) {
-				fetch("/api/email-suggestions?query=" + query)
+			if (query.length >= 0) {
+				fetch("/mail/email-suggestions?query=" + query)
 					.then(response => response.json())
 					.then(emails => {
 						emailSuggestions.innerHTML = "";
