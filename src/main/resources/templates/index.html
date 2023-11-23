@@ -6,48 +6,19 @@
 	<title>Trang chủ</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/style.css}">
 </head>
 
 <body>
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Thông báo khách hàng</h5>
-						<p class="card-text">Gửi mail thông báo cho khách hàng.</p>
-						<a th:href="@{/mail}" class="btn btn-primary">Gửi mail</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Theo dõi danh sách</h5>
-						<p class="card-text">Xem danh sách tất cả các khách hàng.</p>
-						<a th:href="@{/list}" class="btn btn-primary">Xem danh sách</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Thống kê doanh thu</h5>
-						<p class="card-text">Xem báo cáo doanh thu.          </p>
-						<a th:href="@{/statistical}" class="btn btn-primary">Xem thống kê</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Cấu hình hệ thống</h5>
-						<p class="card-text">Thiết lập cấu hình hệ thống.            </p>
-						<a th:href="@{/settings}" class="btn btn-primary">Thiết lập</a>
-					</div>
-				</div>
-			</div>
-		</div>
+	<ul>
+		<li><a th:href="@{/mail}">Thông báo</a></li>
+		<li><a th:href="@{/list}">Danh sách</a></li>
+		<li><a th:href="@{/statistical}">Thống kê</a></li>
+		<li><a th:href="@{/settings}">Cấu hình</a></li>
+		<li style="float: right;"><a th:href="@{/logout}">Đăng xuất</a></li>
+	</ul>
+	<iframe src="https://roadmap.sh/frontend" height="600px" width="100%" title="Iframe Example"></iframe>
+	<!--	<div class="container mt-5">
 		<div class="row mt-5">
 			<div class="col-md-12 text-center">
 				<form th:action="@{/logout}" method="post">
@@ -56,6 +27,7 @@
 			</div>
 		</div>
 	</div>
+-->
 </body>
 
 </html>

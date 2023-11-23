@@ -97,3 +97,32 @@ a {
 a:hover {
   background-color: #3e8e41;
 }
+/* Add styles for the logout link */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ECEE81;
+}
+
+li {
+  float: left;
+}
+
+li:last-child {
+  float: right;
+  color: #EDB7ED; /* Float the last list item (Logout) to the right */
+}
+
+li a {
+  display: block;
+  color: #8DDFCB;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #82A0D8;
+}
